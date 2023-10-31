@@ -1,0 +1,6 @@
+#!/bin/zsh
+# bash shell 的数学运算只支持整数运算，zsh 提供了完整的浮点数操作。
+var1=100
+var2=45.0
+var3=$[$var1 / $var2]
+echo "The final result is $var3" # 2.2222222...3

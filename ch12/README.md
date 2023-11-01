@@ -208,7 +208,7 @@ fi
 ```bash
 [[ expression ]]
 ```
-*expression* 可以使用`test`命令中的标准字符转比较。除此之外，他还提供 *模式匹配* 的特性
+*expression* 可以使用`test`命令中的标准字符串比较。除此之外，他还提供 *模式匹配* 的特性
 例如:
 ```bash
 # DoubleBrackets.sh 

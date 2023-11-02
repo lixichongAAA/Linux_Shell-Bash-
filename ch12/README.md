@@ -1,7 +1,9 @@
 # ch12结构化命令
 
 ## 12.1 使用 *if-then* 语句
-语句格式:
+
+*语句格式:*
+
 ```bash
 if command
 then
@@ -13,7 +15,8 @@ fi
 
 ## 12.2 *if-then-else* 语句
 
-语句格式:
+*语句格式:*
+
 ```bash
 if command
 then    
@@ -24,7 +27,9 @@ fi
 ```
 
 ## 12.3 嵌套 *if* 语句
-语句格式:
+
+*语句格式:*
+
 ```bash
 if command1
 then 
@@ -38,8 +43,10 @@ then
 fi 
 ```
 
-## 12.4 *test*命令
-语句格式:
+## 12.4 *test* 命令
+
+*语句格式:*
+
 ```bash
 if test condition
 then
@@ -50,7 +57,8 @@ fi
 - 我们可以使用`test`测试不同条件，如果`test`命令中列出的条件成立，那么`test`命令就会退出并
 返回退出状态码 0 。这样`if-then`语句的工作方式就和其他编程语言中的`if-then`语句差不多了。
 
-例如：
+*例如：*
+
 ```bash
 my_variable="Full"
 # 这里my_variable变量非空，所以test会返回0.否则，则会执行else分支
@@ -65,6 +73,7 @@ fi
 ```
 
 bash shell中提供了另一种 *条件测试* 方式，无须在`if-then`语句中写明`test`命令：
+
 ```bash
 if [ condition ]
 then
@@ -125,7 +134,7 @@ fi
 - ```[ condition1 ] && [ condition2 ]```
 - ```[ condition1 ] || [ condition2 ]```
 
-例如：
+*例如：*
 
 ```bash
 if [ -d $HOME ] && [ -w $HOME/newfile ]
@@ -139,18 +148,22 @@ fi
 ```
 
 
-## 12.6 `if-then`的高级特性
+## 12.6 *if-then* 的高级特性
 bash shell 还提供了3个可在`if-then`语句中使用的高级特性
 - 在子shell中执行命令的 `单括号`
 - 用于数学表达式的 `双括号`
 - 用于高级字符串处理功能的 `双方括号`
 
 1. ***使用单括号***
-命令格式:
+
+*命令格式:*
+
 ```bash
 (command)
 ```
-例如：
+
+*例如：*
+
 ```bash
 # SingleParenthese.sh
 # 在bash shell执行命令之前，会先创建一个子shell，然后在其中执行命令。
@@ -169,11 +182,12 @@ fi
 子shell仍会将退出码设置为0.
 
 2.***使用双括号***
-命令格式：
+
+*命令格式：*
 ```bash
 (( expression ))
 ```
-例如：
+*例如：*
 ```bash
 #
 var1=10
@@ -204,12 +218,16 @@ fi
 > 注意在双括号中大于小于号不用转义
 
 3. ***使用双方括号***
-命令格式:
+
+*命令格式:*
+
 ```bash
 [[ expression ]]
 ```
 *expression* 可以使用`test`命令中的标准字符串比较。除此之外，他还提供 *模式匹配* 的特性
-例如:
+
+*例如:*
+
 ```bash
 # DoubleBrackets.sh 
 if [[ $BASH_VERSION == 5.* ]]
@@ -219,7 +237,9 @@ fi
 ```
 
 ## 12.7 *case* 命令
-命令格式:
+
+*命令格式:*
+
 ```bash
 case variable in
 pattern1 | pattern2) commands1;;

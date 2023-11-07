@@ -1,0 +1,3 @@
+ls: 无法访问 'badtest': 没有那个文件或目录
+-rw-rw-r-- 1 lxc lxc 1589 11月  6 20:04 test2
+-rw-rw-r-- 1 lxc lxc   60 11月  6 20:26 test5

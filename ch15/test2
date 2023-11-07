@@ -1,0 +1,32 @@
+总用量 108
+-rwxrw-r-- 1 lxc lxc  145 11月  5 14:24 badtest.sh
+-rw-rw-r-- 1 lxc lxc  186 11月  5 15:57 members.csv
+-rw-rw-r-- 1 lxc lxc  554 11月  5 15:57 members.sql
+-rw-rw-r-- 1 lxc lxc 1096 11月  6 18:11 README.md
+-rwxrw-r-- 1 lxc lxc  206 11月  5 13:34 test10.sh
+-rwxrw-r-- 1 lxc lxc  283 11月  5 13:37 test11.sh
+-rwxrw-r-- 1 lxc lxc  146 11月  5 13:41 test12.sh
+-rw-rw-r-- 1 lxc lxc   38 11月  5 13:57 test13out
+-rwxrw-r-- 1 lxc lxc  204 11月  5 13:57 test13.sh
+-rw-rw-r-- 1 lxc lxc   60 11月  5 14:02 test14out
+-rwxrw-r-- 1 lxc lxc  207 11月  5 14:02 test14.sh
+-rwxrw-r-- 1 lxc lxc  301 11月  5 14:13 test15.sh
+-rwxrw-r-- 1 lxc lxc  139 11月  5 14:20 test16.sh
+-rw-rw-r-- 1 lxc lxc   15 11月  5 14:29 test17file
+-rwxrw-r-- 1 lxc lxc  176 11月  5 14:29 test17.sh
+-rw-rw-r-- 1 lxc lxc    0 11月  5 15:02 test18file1
+-rw-rw-r-- 1 lxc lxc    0 11月  5 15:02 test18file2
+-rwxrw-r-- 1 lxc lxc  136 11月  5 15:02 test18.sh
+-rwxrw-r-- 1 lxc lxc  356 11月  5 15:16 test19.sh
+-rw-rw-r-- 1 lxc lxc    0 11月  6 20:03 test2
+-rwxrw-r-- 1 lxc lxc  250 11月  5 15:20 test20.sh
+-rwxrw-r-- 1 lxc lxc  358 11月  5 15:30 test21.sh
+-rw-rw-r-- 1 lxc lxc   97 11月  5 15:47 test22file
+-rwxrw-r-- 1 lxc lxc  241 11月  5 15:47 test22.sh
+-rwxrw-r-- 1 lxc lxc  319 11月  5 15:57 test23.sh
+-rwxrw-r-- 1 lxc lxc   96 11月  5 13:30 test8.sh
+-rw-rw-r-- 1 lxc lxc   17 11月  5 13:31 test9
+-rw-rw-r-- 1 lxc lxc   37 11月  5 13:37 testerror
+-rw-rw-r-- 1 lxc lxc   73 11月  5 14:20 testfile
+-rw-rw-r-- 1 lxc lxc   43 11月  5 13:37 testout
+lxc      tty2         2023-11-06 18:58 (tty2)

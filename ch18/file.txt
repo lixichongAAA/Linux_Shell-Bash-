@@ -1,1 +1,1 @@
-/home/lxc/gcc.txt
+/home/lxc/

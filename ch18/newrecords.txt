@@ -1,1 +1,1 @@
-INSERT INTO employees (last, first, address, city, state, zip) VALUES ('xc', 'l', 'HPU', 'jz', 'lll', 'as');
+INSERT INTO employees (last, first, address, city, state, zip) VALUES ('xc', 'l', 'HPU', 'jz', 'lll', 'as');INSERT INTO employees (last, first, address, city, state, zip) VALUES ('', '', '', '', '', '');

@@ -94,3 +94,11 @@
 [ch18 图形化桌面环境中的脚本编程 笔记](./ch18/README.md)
 
 ### ch19. 初识sed和gawk
+
+- 文本处理
+- 学习sed编辑器
+- sed编辑器基础指令
+- gawk编辑器入门
+- sed编辑器基础
+
+[ch19 初识sed和gawk 笔记](./ch19/README.md)

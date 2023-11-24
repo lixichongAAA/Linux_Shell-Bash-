@@ -9,7 +9,7 @@ Debian Linux发行版与其许多衍生产品（比如Ubuntu）一样，使用da
 Henneth Almquist 这个人为Unix系统开发了Bourne shell的简化版本 Almquist shell，缩写为ash。ash最初的版本体积小，速度奇快，但缺乏许多高级特性，比如命令行编辑和命令历史，这使其很难用作交互式shell。
 NetBSD Unix操作系统移植了ash shell，直到今天依然将其作为默认shell。NetBSD开发人员对其进行了定制，增加了一些新特性，使它更接近Bourne shell。ash shell的这个版本也被FreeBSD操作系统用作默认登录shell。
 Debian Linux发行版创建了自己的ash shell版本，就叫 Debian shell或 dash。dash复刻了NetBSD版本的ash shell的大多数特性，提供了一些高级命令行编辑功能。你可以认为 dash 是Bourne shell的精简版，因此并不像bash shell那样支持众多特性。
-在许多基于Debian的Linux发行版中，dash shell实际上并不是默认shell。由于bash shell在Linux世界广为流行，因此大多数基于Debian的Linux发行版选择将bash shell作为登录shell，而只将dash shell作为安装脚本的快速启动shell，用作发行版安转。
+在许多基于Debian的Linux发行版中，dash shell实际上并不是默认shell。由于bash shell在Linux世界广为流行，因此大多数基于Debian的Linux发行版选择将bash shell作为登录shell，而只将dash shell作为安装脚本的快速启动shell，用作发行版安装。
 要想知道你的系统属于哪种情况，只需查看 */etc/passwd* 文件中的用户账户信息即可。你可以看看自己的账户的默认交互式shell。比如：
 
 ```bash
@@ -50,7 +50,7 @@ dash shell使用命令行选项控制其行为。下表列出了这些选项及�
 |-I|在交互式模式下，忽略输入中的EOF字符|
 |-i|强制shell运行在交互式模式下|
 |-m|启用作业控制（在交互式模式下默认开启）|
-|-s|从 *STDIN* 读取命令（在没有指定读取文件参数时的默认行为|
+|-s|从 *STDIN* 读取命令（在没有指定读取文件参数时的默认行为）|
 |-E|启用Emacs命令行编辑器|
 |-V|启用vi命令行编辑器|
 
@@ -136,9 +136,9 @@ dash shell不能完全支持bash shell的脚本编程功能。为bash shell编�
 - 使用方括号： $[ operation ]
 - 使用双圆括号： $(( operation ))
 
-dash shell支持使用 `expr` 命令和双园括号进行数学运算，但不支持使用方括号。如果你的脚本中有大量采用方括号的数学运算，那么这可是个问题。
+dash shell支持使用 `expr` 命令和双圆括号进行数学运算，但不支持使用方括号。如果你的脚本中有大量采用方括号的数学运算，那么这可是个问题。
 
-在dash shell脚本中执行数学运算的正确格式是使用双园括号：
+在dash shell脚本中执行数学运算的正确格式是使用双圆括号：
 
 [test1.sh](./test1.sh)
 
@@ -160,7 +160,7 @@ The answer is 150
 #### *2. `test`命令*
 
 虽然dash shell支持 `test` 命令，但务必注意其用法。dash shell版本的 `test` 命令跟bash shell版本略有不同。
-bash shell的 `test` 命令使用双等号(==)来测试两个字符串是否相等，而dash shell中的 `test` 命令不能识别用作文本比较的\==符号，只能识别 = 符号。如果在bash脚本中使用了 \==符号，则需要将其换成 \=符号：
+bash shell的 `test` 命令使用双等号(==)来测试两个字符串是否相等，而dash shell中的 `test` 命令不能识别用作文本比较的 \== 符号，只能识别 = 符号。如果在bash脚本中使用了 \== 符号，则需要将其换成 \= 符号：
 
 [test2.sh](./test2.sh)
 
@@ -344,7 +344,7 @@ lxc@Lxc ~/scripts/ch23 % printf "%6.3f\n" $value1 $value2
 20.400
 ```
 
-注意，可以将双圆括号放在算式两边（前面加个美元符号）或整个赋值表达式两边。如果将双圆括号放在整个赋值表达式量表的话，那赋值表达式中等号两侧可以有空格（见上面的例子）。两种方式能输出同样的结果。
+注意，可以将双圆括号放在算式两边（前面加个美元符号）或整个赋值表达式两边。如果将双圆括号放在整个赋值表达式两边的话，那赋值表达式中等号两侧可以有空格（见上面的例子）。两种方式能输出同样的结果。
 
 如果一开始未用 `typeset` 命令声明变量的数据类型，那么zsh shell会尝试自动分配数据类型。这在处理整数和浮点数时很容易出问题。
 
@@ -422,7 +422,7 @@ This is a test
 
 ### *3. 函数*
 
-zsh shell支持使用 `function` 命令或函数名加圆括号的实行来创建自定义函数：
+zsh shell支持使用 `function` 命令或函数名加圆括号的形式来创建自定义函数：
 
 ```zsh
 lxc@Lxc ~/scripts/ch23 % function functest1 {
@@ -441,7 +441,7 @@ This is the test2 function
 
 ## 7. 实战演练
 
-zsh shell的tcp模块尤为使用。该模块允许创建TCP套接字，侦听传入的连接，然后与远程系统建立连接。这是在shell脚本之间传输数据的绝佳方式。
+zsh shell的tcp模块尤为实用。该模块允许创建TCP套接字，侦听传入的连接，然后与远程系统建立连接。这是在shell脚本之间传输数据的绝佳方式。
 
 首先，打开shell窗口作为服务器。启动zsh，加载tcp模块，然后定义TCP套接字的侦听端口号。
 
@@ -485,7 +485,7 @@ This is a test message
 
 你也可以用同样的方法反向发送数据。
 
-事成之后，使用 `-c` 选项爱关闭各个系统中对应的句柄。对于服务器端来说，可以使用下列命令：
+事成之后，使用 `-c` 选项关闭各个系统中对应的句柄。对于服务器端来说，可以使用下列命令：
 
 ```zsh
 lxc@Lxc ~/scripts % ztcp -c $listen

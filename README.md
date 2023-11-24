@@ -132,3 +132,12 @@
 - 自定义函数
 
 [ch22 gawk进阶 笔记](./ch22/README.md)
+
+### ch23. 使用其他shell
+
+- dash shell
+- dash脚本编程
+- zsh shell
+- zsh脚本编程
+
+[ch23 使用其他shell 笔记](./ch23/README.md)

@@ -4,12 +4,12 @@
 
 ## 1. 什么是 dash shell
 
-(我真的不想解释，看书去吧。。。算了还是说说吧)
-Debian Linux发行版与其许多衍生产品（比如Ubuntu）一样，使用dash shell作为Linux bash shell的替代品。dash shell是ash shell的直系后裔，是Unix系统中Bourne shell的简易复制品。
-Henneth Almquist 这个人为Unix系统开发了Bourne shell的简化版本 Almquist shell，缩写为ash。ash最初的版本体积小，速度奇快，但缺乏许多高级特性，比如命令行编辑和命令历史，这使其很难用作交互式shell。
-NetBSD Unix操作系统移植了ash shell，直到今天依然将其作为默认shell。NetBSD开发人员对其进行了定制，增加了一些新特性，使它更接近Bourne shell。ash shell的这个版本也被FreeBSD操作系统用作默认登录shell。
-Debian Linux发行版创建了自己的ash shell版本，就叫 Debian shell或 dash。dash复刻了NetBSD版本的ash shell的大多数特性，提供了一些高级命令行编辑功能。你可以认为 dash 是Bourne shell的精简版，因此并不像bash shell那样支持众多特性。
-在许多基于Debian的Linux发行版中，dash shell实际上并不是默认shell。由于bash shell在Linux世界广为流行，因此大多数基于Debian的Linux发行版选择将bash shell作为登录shell，而只将dash shell作为安装脚本的快速启动shell，用作发行版安装。
+(我真的不想解释，看书去吧。。。算了还是说说吧)  
+Debian Linux发行版与其许多衍生产品（比如Ubuntu）一样，使用dash shell作为Linux bash shell的替代品。dash shell是ash shell的直系后裔，是Unix系统中Bourne shell的简易复制品。  
+Henneth Almquist 这个人为Unix系统开发了Bourne shell的简化版本 Almquist shell，缩写为ash。ash最初的版本体积小，速度奇快，但缺乏许多高级特性，比如命令行编辑和命令历史，这使其很难用作交互式shell。  
+NetBSD Unix操作系统移植了ash shell，直到今天依然将其作为默认shell。NetBSD开发人员对其进行了定制，增加了一些新特性，使它更接近Bourne shell。ash shell的这个版本也被FreeBSD操作系统用作默认登录shell。  
+Debian Linux发行版创建了自己的ash shell版本，就叫 Debian shell或 dash。dash复刻了NetBSD版本的ash shell的大多数特性，提供了一些高级命令行编辑功能。你可以认为 dash 是Bourne shell的精简版，因此并不像bash shell那样支持众多特性。  
+在许多基于Debian的Linux发行版中，dash shell实际上并不是默认shell。由于bash shell在Linux世界广为流行，因此大多数基于Debian的Linux发行版选择将bash shell作为登录shell，而只将dash shell作为安装脚本的快速启动shell，用作发行版安装。  
 要想知道你的系统属于哪种情况，只需查看 */etc/passwd* 文件中的用户账户信息即可。你可以看看自己的账户的默认交互式shell。比如：
 
 ```bash
@@ -54,8 +54,8 @@ dash shell使用命令行选项控制其行为。下表列出了这些选项及�
 |-E|启用Emacs命令行编辑器|
 |-V|启用vi命令行编辑器|
 
-`-E` 命令行选项允许使用Emacs编辑器命令来进行命令行文本编辑（参见第10章）。你可以通过 Ctrl 和 Alt 组合键，使用所有的Emacs命令来处理一行中的文本。
-`-V` 命令行选项允许使用vi编辑器命令进行命令行文本编辑（参见第10章）。该功能允许用Esc键在普通模式和vi编辑器模式之间切换。当处于vi模式时，可以使用标准的vi编辑器命令（比如，x 用于删除一个字符，i 用于插入文本）。当完成命令行编辑后，必须再次按下Esc键退出vi编辑器模式。
+`-E` 命令行选项允许使用Emacs编辑器命令来进行命令行文本编辑（参见第10章）。你可以通过 Ctrl 和 Alt 组合键，使用所有的Emacs命令来处理一行中的文本。  
+`-V` 命令行选项允许使用vi编辑器命令进行命令行文本编辑（参见第10章）。该功能允许用Esc键在普通模式和vi编辑器模式之间切换。当处于vi模式时，可以使用标准的vi编辑器命令（比如，x 用于删除一个字符，i 用于插入文本）。当完成命令行编辑后，必须再次按下Esc键退出vi编辑器模式。  
 
 ### 2. dash环境变量
 
@@ -159,7 +159,7 @@ The answer is 150
 
 #### *2. `test`命令*
 
-虽然dash shell支持 `test` 命令，但务必注意其用法。dash shell版本的 `test` 命令跟bash shell版本略有不同。
+虽然dash shell支持 `test` 命令，但务必注意其用法。dash shell版本的 `test` 命令跟bash shell版本略有不同。  
 bash shell的 `test` 命令使用双等号(==)来测试两个字符串是否相等，而dash shell中的 `test` 命令不能识别用作文本比较的 \== 符号，只能识别 = 符号。如果在bash脚本中使用了 \== 符号，则需要将其换成 \= 符号：
 
 [test2.sh](./test2.sh)
@@ -189,7 +189,7 @@ They're the same
 - 使用 `function` 语句。
 - 只使用函数名。
 
-dash shell不支持 `function` 语句，必须使用函数名和圆括号来定义函数。
+dash shell不支持 `function` 语句，必须使用函数名和圆括号来定义函数。  
 如果编写的脚本可能会在dash环境中，就只能使用函数名来定义函数，决不要用 `function` 语句。
 
 [test3.sh](./test3.sh)
@@ -235,7 +235,7 @@ This is the end of script.
 - shell兼容模式
 - 可加载模块
 
-可加载模块是shell设计中最先进的特性。我们在bash 和 dash shell中已经看到过，每种shell都包含一组内建命令，这些命令无须借助外部程序即可使用。内建命令的好处在于执行速度快。shell不必在运行命令前先加载一个外部程序，因为内建命令已经在内存中了，随时可用。
+可加载模块是shell设计中最先进的特性。我们在bash 和 dash shell中已经看到过，每种shell都包含一组内建命令，这些命令无须借助外部程序即可使用。内建命令的好处在于执行速度快。shell不必在运行命令前先加载一个外部程序，因为内建命令已经在内存中了，随时可用。  
 zsh shell提供了一组核心内建命令，比如网络支持和高级数学功能。可以之添加你认为有用的模块。
 
 ## 5. zsh shell的组成
@@ -244,7 +244,7 @@ zsh shell提供了一组核心内建命令，比如网络支持和高级数学�
 
 ### *1. shell选项*
 
-大多数shell采用命令行选项来定义shell的行为。zsh shell也不例外，同样提供了相应的选项。你可以在命令行或shell中用 `set` 命令设置shell选项。
+大多数shell采用命令行选项来定义shell的行为。zsh shell也不例外，同样提供了相应的选项。你可以在命令行或shell中用 `set` 命令设置shell选项。  
 下表列出了zsh shell可用的命令行选项。
 
 |选项|描述|
@@ -453,7 +453,7 @@ lxc@Lxc ~/scripts % listen=$REPLY
 lxc@Lxc ~/scripts % ztcp -a $listen
 ```
 
-`ztcp` 命令的 `-l` 选项指定了监听的TCP端口号（在本例中是8888）。特殊的 `$REPLY` 变量包含与网络套接字关联的文件句柄(file handle)。`ztcp` 命令的 `-a` 选项会一直等待传入连接建立完毕。
+`ztcp` 命令的 `-l` 选项指定了监听的TCP端口号（在本例中是8888）。特殊的 `$REPLY` 变量包含与网络套接字关联的文件句柄(file handle)。`ztcp` 命令的 `-a` 选项会一直等待传入连接建立完毕。  
 现在，打开另一个shell窗口作为客户端，输入下列命令来连接服务端shell（注意客户端shell进入了ch23目录，服务器端shell并没有进入ch23目录，以此作为区分）：
 
 ```zsh

@@ -1,13 +1,14 @@
 #!/bin/bash
 # Compare two file's creation dates/times
 #
-if [ $HOME/Downloads/games.rpm -nt $HOME/software/games.rpm ]; then
-    echo "The $HOME/Downloads/games.rpm is newer"
-    echo "than $HOME/software/game.rpm."
+if [ $HOME/Downloads/games.rpm -nt $HOME/software/games.rpm ]
+then
+     echo "The $HOME/Downloads/games.rpm file is newer"
+     echo "than the $HOME/software/games.rpm file." 
 #
 else
-    echo "The $HOME/Downloads/games.rpm is older"
-    echo "than $HOME/sorfware/game.rpm."
+     echo "The $HOME/Downloads/games.rpm file is older"
+     echo "than the $HOME/software/games.rpm file." 
 #
 fi
 

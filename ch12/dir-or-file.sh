@@ -1,23 +1,23 @@
 #!/bin/bash
-# Check if object exist and is a directory or a file
-# 
-object=$HOME
+# Check if object exists and is a directory or a file
+#
+object_name=$HOME/lxc
 echo
-echo "The object being chekced: $object"
+echo "The object being checked: $object_name"
 echo
-# 
-if [ -e $object ]
+#
+if [ -e $object_name ]
 then
-    echo "The object, $object does exists,"
-    # 
-    if [ -f $object ]
-    then
-        echo "and $object is a file."
-    # 
-    else
-        echo "and $object is a directory."
-    fi
+     echo "The object, $object_name, does exist,"
+     #
+     if [ -f $object_name ]
+     then
+          echo "and $object_name is a file."
+     #
+     else
+          echo "and $object_name is a directory."
+     fi
+#
 else
-    echo "The object, $object does NOT exist."
+     echo "The object, $object_name, does NOT exist."
 fi
-# -e 用于检查文件或者目录是否存在

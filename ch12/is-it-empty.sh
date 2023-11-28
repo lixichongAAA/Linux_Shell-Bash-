@@ -1,23 +1,28 @@
 #!/bin/bash
 # Check if a file is empty
-# 
+#
 file_name=$HOME/sentinel
 echo
-echo "Checking if file $file_name is empty..."
-echo
+echo "Checking if $file_name file is empty..."
+echo 
+#
+# Check if file exists and is a file.
+#
 if [ -f $file_name ]
 then
-    # The file does exist, and check if it it empty
-    if [ -s $file_name ]
-    then
-        echo "The file $file_name does exist and has data in it."
-        echo "Will not remove this file."
-    else
-        echo "The file $file_name exists, but is empty."
-        echo "Deleting this empty file..."
-        rm $file_name
-        echo "This file has been deleted."
-    fi
+     # File does exist. Check if it is empty.
+     #
+     if [ -s $file_name ]
+     then
+          echo "The $file_name file exists and has data in it."
+          echo "Will not remove this file."
+     #
+     else
+          echo "The $file_name file exits, but is empty."
+          echo "Deleting empty file..."
+          rm $file_name
+     fi
+#
 else
-    echo "The file $file_name does NOT exit."
+     echo "The $file_name file does not exist."
 fi

@@ -4,3 +4,4 @@ var1=10
 var2=20
 var3=$(expr $var2 / $var1)
 echo "The result is $var3"
+# 要将一个数学算式的结果赋给变量，需要使用命令替换来获取 expr 命令的输出

@@ -2,6 +2,15 @@
 
 学习 《Linux命令行与Shell脚本编程大全》 时随书写的一些脚本、笔记。
 
+### ch05. 理解shell
+
+- shell的类型
+- shell的父子关系
+- 别出心裁的子shell用法
+- shell内建命令
+
+[ch05 理解shell 笔记](./ch05/README.md)
+
 ### ch06. Linux环境变量
 
 - 环境变量
@@ -11,6 +20,8 @@
 - 设置PATH环境变量
 - 定位环境文件
 - 数组变量
+
+[ch06 Linux环境变量 笔记](./ch06/README.md)
 
 ### ch07. 理解Linux文件权限
 

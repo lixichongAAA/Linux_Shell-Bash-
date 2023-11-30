@@ -5,6 +5,7 @@
 ## 1. 理解输入输出
 
 到目前位置，你已经知道了两种显示脚本输出的方法。
+
 - 在显示器屏幕上显示输出。
 - 将输出重定向到文件。
 
@@ -33,44 +34,47 @@ This is a test
 This is a test
 This is a second test
 This is a second test
-# 当在命令行中输入cat命令时，它会从STDIN接受输入。输入一行，cat命令就显示一行。也可以通过输入重定向符强制cat命令接受来自STDIN之外的文件输入:
+# 当在命令行中输入cat命令时，它会从STDIN接受输入。输入一行，cat命令就显示一行。
+# 也可以通过输入重定向符强制cat命令接受来自STDIN之外的文件输入:
 $ cat < testfile
 This is the first line.
 This is the second line.
 This is the third line.
 ```
 
-内联输入重定向 **<<** 见[第11章笔记](../ch11/README.md)
+内联输入重定向 **<<** 见[第11章笔记](../ch11/README.md#2-输入重定向)。
 
 #### *2. STDOUT*
 
 *STDOUT* 文件描述符代表shell的标准输出，在终端界面上，标准输出就是显示器。shell的所有输出（包括shell中运行的程序和脚本）都会被送往标准输出。  
-可以通过输出重定向符 **>**，将输出重定向到指定的文件，也可以使用 **>>** 将数据追加到某个已存在文件。
+可以通过输出重定向符 **>**，将输出重定向到指定的文件，也可以使用 **>>** 将数据追加到某个文件。
 
 *例如：*
 
 ```bash
-# lxc@Lxc:~/scripts/ch15$ ls -l > test2
-# lxc@Lxc:~/scripts/ch15$ cat test2
-# 总用量 108
-# -rwxrw-r-- 1 lxc lxc  145 11月  5 14:24 badtest.sh
-# -rw-rw-r-- 1 lxc lxc  186 11月  5 15:57 members.csv
-# -rw-rw-r-- 1 lxc lxc  554 11月  5 15:57 members.sql
-# -rw-rw-r-- 1 lxc lxc 1096 11月  6 18:11 README.md
-# ...省略
-# lxc@Lxc:~/scripts/ch15$ who >> test2
-# lxc@Lxc:~/scripts/ch15$ cat test2
-# 总用量 108
-# -rwxrw-r-- 1 lxc lxc  145 11月  5 14:24 badtest.sh
-# -rw-rw-r-- 1 lxc lxc  186 11月  5 15:57 members.csv
-# ...省略
-# lxc      tty2         2023-11-06 18:58 (tty2)
+lxc@Lxc:~/scripts/ch15$ ls -l > test2
+lxc@Lxc:~/scripts/ch15$ cat test2
+总用量 108
+-rwxrw-r-- 1 lxc lxc  145 11月  5 14:24 badtest.sh
+-rw-rw-r-- 1 lxc lxc  186 11月  5 15:57 members.csv
+-rw-rw-r-- 1 lxc lxc  554 11月  5 15:57 members.sql
+-rw-rw-r-- 1 lxc lxc 1096 11月  6 18:11 README.md
+...省略
+lxc@Lxc:~/scripts/ch15$ who >> test2
+lxc@Lxc:~/scripts/ch15$ cat test2
+总用量 108
+-rwxrw-r-- 1 lxc lxc  145 11月  5 14:24 badtest.sh
+-rw-rw-r-- 1 lxc lxc  186 11月  5 15:57 members.csv
+...省略
+lxc      tty2         2023-11-06 18:58 (tty2)
 ```
+
 shell对于错误消息的处理和普通输出是分开的。因此，当对脚本使用标准输出重定向时，如果脚本产生错误消息，错误消息会被显示在屏幕上，而输出的文件中只有标准输出的消息。
 
 #### *3. STDERR*
 
-*STDERR* 代表shell的标准错误输出。shell或运行在shell的程序和脚本报错时，生成的错误消息都会被送往这个位置。**在默认情况下，*STDOUT* 和 *STDERR* 指向同一个地方（屏幕），但 *STDERR* 并不会随着 *STDOUT* 的重定向而发生改变。在使用脚本时，我们常常想改变这种情况**。
+*STDERR* 代表shell的标准错误输出。shell或运行在shell的程序和脚本报错时，生成的错误消息都会被送往这个位置。  
+**在默认情况下，*STDOUT* 和 *STDERR* 指向同一个地方（屏幕），但 *STDERR* 并不会随着 *STDOUT* 的重定向而发生改变。在使用脚本时，我们常常想改变这种情况**。
 
 ### 2. 重定向错误
 
@@ -118,6 +122,7 @@ ls: 无法访问 'badtest': 没有那个文件或目录
 ## 2. 在脚本中重定向输出
 
 在脚本中重定向输出方法有两种：
+
 - 临时重定向一行
 - 永久重定向脚本中的所有命令
 
@@ -148,6 +153,7 @@ echo "This is normal output"
 This is an error
 This is normal output
 ```
+
 这是因为，**默认情况下， *STDOUT* 和 *STDERR* 指向的位置（屏幕）是一样的。** 但是如果你在运行脚本时重定向了 *STDERR* ，那么脚本中所有送往 *STDERR* 的文本都会被重定向。
 
 ```bash
@@ -160,7 +166,7 @@ This is an error
 
 #### *2. 永久重定向*
 
-如果脚本中有大量数据需要重定向，那么逐条重定向所有`echo`语句就会很烦琐。这时可以使用`exec`命令，它会启动一个新shell，并在脚本执行期间重定向某个特定文件描述符。
+如果脚本中有大量数据需要重定向，那么逐条重定向所有 `echo` 语句就会很烦琐。这时可以使用 `exec` 命令，它会启动一个新shell，并在脚本执行期间重定向某个特定文件描述符。
 
 *例如：*
 
@@ -208,15 +214,16 @@ echo "but this should go to testerror file" >&2
 # 注意观察结果。 在重定向标准输出之前，标准输出是输出在屏幕上的。
 ```
 
-一旦重定向了 *STDERR* 或者 *STDOUT* 那么就不太容易将其恢复到原先的位置。如果需要在重定向中来回切换，那么请看15.4节
+一旦重定向了 *STDERR* 或者 *STDOUT* 那么就不太容易将其恢复到原先的位置。如果需要在重定向中来回切换，那么请看 [15.4节](./README.md#4-创建自己的重定向)。
 
 ## 3. 在脚本中重定向输入
 
-可以使用与重定向 *STDOUT* 和 *STDERR* 相同的方法，将 *STDIN* 从键盘重定向到其他位置。在Linux系统中，`exec`命令允许将 *STDIN* 重定向为文件：
+可以使用与重定向 *STDOUT* 和 *STDERR* 相同的方法，将 *STDIN* 从键盘重定向到其他位置。在Linux系统中，`exec` 命令允许将 *STDIN* 重定向为文件：
 
 ```bash
 exec 0< filname
 ```
+
 *来个例子：*
 
 [test12.sh](./test12.sh)
@@ -248,7 +255,7 @@ done
 
 #### *1. 创建输出文件描述符*
 
-可以用`exec`命令分配用于输出的文件描述符。和标准的文件描述符一样，一旦将替代性文件描述符指向文件，此重定向就会一直生效，直至重新分配。
+可以用 `exec` 命令分配用于输出的文件描述符。和标准的文件描述符一样，一旦将替代性文件描述符指向文件，此重定向就会一直生效，直至重新分配。
 
 *来个例子吧:*
 
@@ -271,7 +278,7 @@ echo "Then this should be back on the monitor."
 # and this should be stored in the file
 ```
 
-当然你也可以不创建新文件，而是使用`exec`命令将数据追加到现有文件：
+当然你也可以不创建新文件，而是使用 `exec` 命令将数据追加到现有文件：
 
 ```bash
 exec 3>>test13out
@@ -381,7 +388,8 @@ echo "This is a test line" >&3
 #### *5. 关闭文件描述符*
 
 如果创建了新的输入/输出文件描述符，那么shell会在脚本退出时自动将其关闭。然而在一些情况下，我们需要在脚本结束前手动关闭文件描述符。  
-要关闭文件描述符，只需将其重定向到特殊符号`&-`即可。例如我想关闭文件描述符3：
+要关闭文件描述符，只需将其重定向到特殊符号 `&-` 即可。例如我想关闭文件描述符3：
+
 ```bash
 exec 3>&-
 ```
@@ -438,10 +446,10 @@ cat test17file
 
 ## 5. 列出打开的文件描述符
 
-能用的文件描述符只有9个，你可能会觉得没有什么复杂的。但有时要记住哪个文件描述符被重定向到了哪里就没那么容易了。为了帮你厘清条例，bash shell提供了`lsof`（**l**i**s**t **o**pened **f**ile）命令。
-`lsof`命令会列出整个Linux系统打开的所有文件描述符，这包括所有后台进程以及登录用户打开的文件。  
-有大量的命令行参数可以过滤`lsof`命令的输出。最常用的选项是`-p`和`-d`，前者允许指定进程ID（PID），后者允许指定要显示的文件描述符编号（多个编号之间以逗号隔开）。  
-要想知道当前进程的PID。可以使用特殊环境变量`$$`（shell会将其设为当前PID）。`-a`选项可用于对另外两个选项的结果执行AND（取交集）运算。
+能用的文件描述符只有9个，你可能会觉得没有什么复杂的。但有时要记住哪个文件描述符被重定向到了哪里就没那么容易了。为了帮你厘清条理，bash shell提供了 `lsof`（**l**i**s**t **o**pened **f**ile）命令。
+`lsof` 命令会列出整个Linux系统打开的所有文件描述符，这包括所有后台进程以及登录用户打开的文件。  
+有大量的命令行参数可以过滤 `lsof` 命令的输出。最常用的选项是 `-p` 和 `-d` ，前者允许指定进程ID（PID），后者允许指定要显示的文件描述符编号（多个编号之间以逗号隔开）。  
+要想知道当前进程的PID。可以使用特殊环境变量 `$$`（shell会将其设为当前PID）。`-a` 选项可用于对另外两个选项的结果执行AND（取交集）运算。
 
 ```bash
 lsof -a -p $$ -d 0,1,2
@@ -452,7 +460,7 @@ bash    9454  lxc    2u   CHR  136,1      0t0    4 /dev/pts/1
 # 显示了当前进程的默认文件描述符。
 ```
 
-`lsof`的默认输出中包含多列信息，含义如下表所示：
+`lsof` 的默认输出中包含多列信息，含义如下表所示：
 
 |列|描述|
 | :--------: | :---------------------------------:|
@@ -492,8 +500,8 @@ test18.sh 10474  lxc    7r   REG  259,8       73 2250411 /home/lxc/scripts/ch15/
 
 ## 6. 抑制命令输出
 
-有时候，你可能不想显示脚本输出。将脚本作为后台进程运行时这很常见（参见第16章）。如果在后台运行的脚本出现错误消息，那么shell会将其通过邮件发送给进程属主。这会很麻烦，尤其是当运行的脚本输出很多烦琐的小错误时。  
-**要解决这个问题，可以将 *STDERR* 重定向到一个名为`null`文件的特殊文件(该文件在前面已有讲述)** 跟它的名字很像，null文件里什么都没有。shell输出到null文件的任何数据都不会被保存，全部会被丢弃。
+有时候，你可能不想显示脚本输出。将脚本作为后台进程运行时这很常见（参见[第16章](../ch16/README.md#1-后台模式运行脚本)）。如果在后台运行的脚本出现错误消息，那么shell会将其通过邮件发送给进程属主。这会很麻烦，尤其是当运行的脚本输出很多烦琐的小错误时。  
+**要解决这个问题，可以将 *STDERR* 重定向到一个名为`null`文件的特殊文件** (该文件已有讲述，见[第12章](../ch12/README.md#8-实战演练)) 跟它的名字很像，null文件里什么都没有。shell输出到null文件的任何数据都不会被保存，全部会被丢弃。  
 在Linux系统中，null文件的位置是 */dev/null* 。重定向到该位置的任何数据都会被丢弃，不再显示。
 
 ```bash
@@ -526,7 +534,7 @@ Linux系统有一个专供临时文件使用的特殊目录 */tmp*，其中存�
 
 ### *1. 创建本地临时文件*
 
-在默认情况下，`mktemp` 会在当前目录中创建一个文件。在使用`mktemp`命令时，只需指定一个文件名模板即可。模板可以包含任意文本字符，同时在文件名末尾要加上6个`X`:
+在默认情况下，`mktemp` 会在当前目录中创建一个文件。在使用 `mktemp` 命令时，只需指定一个文件名模板即可。模板可以包含任意文本字符，同时在文件名末尾要加上6个`X`:
 
 ```bash
 mktemp testing.XXXXXX
@@ -535,7 +543,7 @@ ls -al testing.2x7Ykb
 -rw------- 1 lxc lxc 0 11月  7 17:14 testing.2x7Ykb
 ```
 
-`mktemp`命令会任意地将6个`X`替换为同等数量的字符，以保证文件名在目录中是唯一的。`mktemp`命令输出的就是它所创建的文件名。在脚本中使用`mktemp`命令时，可以将文件名保存到变量中，这样就能在随后的脚本中引用了：
+`mktemp` 命令会任意地将6个 `X` 替换为同等数量的字符，以保证文件名在目录中是唯一的。`mktemp` 命令输出的就是它所创建的文件名。在脚本中使用 `mktemp` 命令时，可以将文件名保存到变量中，这样就能在随后的脚本中引用了：
 
 [test19.sh](./test19.sh)
 
@@ -569,7 +577,7 @@ rm -f $tempfile 2>/dev/null
 
 ### *2. 在 /tmp 目录中创建临时文件*
 
-`-t` 选项会强制 `mktemp` 命令在系统的临时目录中创建文件。在使用这个特性时，`mktemp` 命令返回的是所创件的临时文件的完整路径名，而不是文件名。
+`-t` 选项会强制 `mktemp` 命令在系统的临时目录中创建文件。在使用这个特性时，`mktemp` 命令返回的是所创建的临时文件的完整路径名，而不是文件名。
 
 [test20.sh](./test20.sh)
 
@@ -627,6 +635,7 @@ tee filename
 ```
 
 *来个例子：*
+
 ```bash
 date | tee testfile
 2023年 11月 07日 星期二 17:30:43 CST
@@ -656,3 +665,60 @@ echo "This is the start of the test." | tee $tempfile
 echo "This is the second line of the test." | tee -a $tempfile
 echo "This is the end of the test." | tee -a $tempfile
 ```
+
+## 9. 实战演练
+
+搞个脚本，读取CSV格式的数据文件，输出SQL INSERT语句。
+
+[test23.sh](./test23.sh)
+
+```bash
+#!/bin/bash
+# read file and create INSERT statements for MYSQL
+
+outfile='members.sql'
+IFS=','
+while read lname fname address city state zip
+do
+    cat >> $outfile << EOF
+    INSERT INTO members(lname, fname, address, city, state, zip) VALUES ('$lname', '$fname', '$address', '$city', '$state', '$zip');
+EOF
+done < ${1}
+```
+
+脚本中出现了3处重定向操作。`while` 循环使用 `read` 语句从数据文件中读取文本。注意 `done` 语句中出现的重定向符号：
+
+```bash
+done < ${1}
+```
+
+脚本中另外两处重定向操作出现在同一条语句中：
+
+```bash
+cat >> $outfile << EOF
+```
+
+这条语句包含一个输出重定向（追加）和一个内联输入重定向（使用EOF字符串作为起止标志）。输出重定向将 `cat` 命令的输出追加到由 `$outfile` 变量指定的文件中，可以这样看这个语句：
+
+```bash
+cat >> $outfile
+```
+
+`cat` 命令的输入使用内敛输入重定向，使用EOF字符串作为起止的标志，或许这样看更清晰一些：
+
+```bash
+cat << EOF
+INSERT INTO members(lname, fname, address, city, state, zip) VALUES ('$lname', '$fname', '$address', '$city', '$state', '$zip');
+EOF
+```
+
+不再解释。  
+
+下面是输出：
+
+```bash
+lxc@Lxc:~/scripts/ch15$ ./test23.sh members.sql
+lxc@Lxc:~/scripts/ch15$
+```
+
+当然，运行脚本时，显示器上不会有任何输出。可以在输出文件 `members.sql` 中查看输出。

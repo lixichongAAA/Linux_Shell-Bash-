@@ -1000,9 +1000,9 @@ lxc@Lxc:~/scripts/ch16$
 补充：shell脚本执行命令时，`source` 与 `bash` 的区别：
 
 - bash xxx.sh
-- ./xxx.sh(使用shebang)
+- ./xxx.sh(使用shebang)  
 以上命令是开启一个新子进程去执行sh脚本。
 
 - source xxx.sh
-- . xxx.sh(点号是 `source` 命令的别名，叫做 **点号操作符**（参见[第17章](../ch17/README.md#6-创建库)）)。
+- . xxx.sh(点号是 `source` 命令的别名，叫做 **点号操作符**（参见[第17章](../ch17/README.md#6-创建库)）)。  
 以上命令是在当前进程来进行运行。

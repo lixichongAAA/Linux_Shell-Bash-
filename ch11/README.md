@@ -61,7 +61,7 @@ echo "The cost of the item is \$15"
 
 [test3](./test3) [test4](./test4)
 
-### 3. ***命令替换***
+### 3. *命令替换*
 
 有两种方法可以将命令输出赋给变量。
 

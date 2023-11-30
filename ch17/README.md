@@ -681,7 +681,7 @@ echo "The result is $result."
 The result is .
 ```
 
-使用函数库的关键在于 `source` 命令。`source` 命令会在当前shell的上下文中执行命令，而不是创建新shell并在其中执行命令。可以用 `source`命令在脚本中运行库文件，这样脚本就可以使用库中的函数了。  
+使用函数库的关键在于 `source` 命令。`source` 命令会在当前shell的上下文中执行命令，而不是创建新shell并在其中执行命令。可以用 `source` 命令在脚本中运行库文件，这样脚本就可以使用库中的函数了。  
 `source` 命令有个别名，称作**点号操作符**。要在shell脚本中运行 *myfuncs* 库文件，只需添加下面这一行代码：
 
 ```bash

@@ -30,6 +30,7 @@ Linux系统中使用的 `GNU ps` 命令支持以下3种类型的命令行选项�
 Unix风格选项源自贝尔实验室开发的 AT&T Unix 系统中的 `ps` 命令。这些选项如下表所示。
 
 (我比较懒。。。)
+
 ![ps](./ps1.png "ps 命令选项")
 ![ps](./ps2.png "ps 命令选项")
 
@@ -387,7 +388,7 @@ lxc@Lxc:~/scripts/ch04-更多的bash shell命令$ sort -n file2
 |-s|--stable|禁止last-sort比较，实现稳定排序|
 |-T|--temporary-directory=*DIR*|指定一个位置来存储临时工作文件|
 |-t|--field-separator=*SEP*|指定字段分隔符|
-|-u|--unique|和-c选项合用时，检查严格排序；不和-c选项合用时，相同的行仅输出一次（即去重相当于 sort | uniq）|
+|-u|--unique|和-c选项合用时，检查严格排序；不和-c选项合用时，相同的行仅输出一次（即去重相当于 sort \| uniq）|
 |-z|--zero-terminated|在行尾使用NULL字符替代换行符|
 
 例如，要根据用户ID对 /etc/passwd 按数值排序。
@@ -536,6 +537,7 @@ five
 gzip会压缩命令行中指定的文件。也可以指定多个文件名或是用通配符来一次性压缩多个文件。
 
 ```bash
+lxc@Lxc:~/scripts/ch04-更多的bash shell命令$ gzip file*
 lxc@Lxc:~/scripts/ch04-更多的bash shell命令$ ls file*
 file2.gz  file3.gz
 lxc@Lxc:~/scripts/ch04-更多的bash shell命令$ gunzip file*

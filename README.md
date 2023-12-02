@@ -2,6 +2,17 @@
 
 学习 《Linux命令行与Shell脚本编程大全》 时随书写的一些脚本、笔记。
 
+### ch03. bash shell基础命令
+
+- 与shell交互
+- bash手册
+- 浏览文件系统
+- 列出文件和目录
+- 管理文件和目录
+- 查看文件内容
+
+[ch03 bash shell基础命令 笔记](./ch03-bash%20shell基础命令/README.md)
+
 ### ch04. 更多的bash shell命令
 
 - 进程管理
@@ -9,6 +20,8 @@
 - 挂载新磁盘
 - 数据排序
 - 数据归档
+
+[ch04 更多的bash shell命令 笔记](./ch04-更多的bash%20shell命令/README.md)
 
 ### ch05. 理解shell
 
